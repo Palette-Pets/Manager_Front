@@ -1,0 +1,112 @@
+.postsSection {
+    padding: 1rem;
+}
+
+.postsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.postsTitle {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.postsMore {
+    font-size: 0.75rem;
+    
+}
+
+.postsList {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.post {
+    
+    background-color: white;
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.postHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.postUserImage {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+}
+
+.postUserName {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.postTime {
+    font-size: 0.75rem;
+}
+
+.postContent {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.actionText {
+    font-size: 0.75rem;
+}
+
+.postActions {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.postActionButton {
+    /* 버튼 내부 텍스트 크기 줄이기 */
+    font-size: 0.75rem;
+
+    /* 버튼 크기 줄이기 */
+    padding: 0.3rem 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+
+.postAction {
+    /* 아이콘 크기 줄이기 */
+    font-size: 0.75rem;
+}
+
+.ModalContainer {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center;    /* 수직 중앙 정렬 */
+    padding-top: 1rem;
+    gap: 1rem;
+}
+
+.commentBox {
+    color: black;
+    font-size: 0.875rem;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    background-color: white;
+}
+
+.commentForm {
+    margin-top: 10px;
+}

@@ -1,0 +1,27 @@
+.iconsBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    /* 왼쪽에서 시작 */
+    justify-content: flex-start; 
+    
+    /* 한 줄이 꽉 차면 다음 줄로 */
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+}
+
+.iconButtonColumn {
+
+    /* 버튼 내부 텍스트 크기 줄이기 */
+    font-size: 0.8rem;
+    
+    /* 버튼 크기 줄이기 */
+    padding: 0.4rem 0.6rem;
+    margin: 0.43rem;
+}
+
+.iconColumn {
+    /* 아이콘 크기 줄이기 */
+    font-size: 0.8rem;
+}

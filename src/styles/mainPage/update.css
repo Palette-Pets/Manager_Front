@@ -1,0 +1,70 @@
+
+@media only screen and (max-width: 600px) {
+    .notice {
+        min-width: 17rem;
+        height: auto;
+    }
+    .updateButton {
+        left: 0;
+        margin-bottom: 0.5rem;
+    }
+    .upList {
+        cursor:hand;
+        color:black
+    }
+}
+
+
+@media only screen and (min-width: 600px) {
+    .notice {
+        min-width: 39rem;
+        height: 21rem;
+    }
+
+    .updateButton {
+        left: 500px;
+    }
+
+    .updateButton:hover{
+        background-color:royalblue;
+    }
+}
+
+.upList {
+    cursor:hand;
+    color:black
+}
+
+.notice {
+    border: solid 2px black;
+    border-radius: 7px;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+}
+
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
+
+.updateButton {
+    margin-top: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    height: 25px;
+    width: 70px;
+    color:white;
+    background-color: black;
+}
+
+.updateButton:hover {
+    color: white;
+    background-color: #6b7280;
+}
