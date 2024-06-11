@@ -22,7 +22,7 @@ const MemberListcomp = () => {
         axios.put(`http://localhost:8090/stopMember/${memberId}`)
         .then(res => {
             setList(list.map(member =>
-                member.memberId === memberId ? { ...member, isDeleted: !member.isDeleted } : member
+                member.memberId === memberId ? { ...member, deleted: !member.deleted } : member
             ));
             console.log('API 응답', res.data);
         })
@@ -56,7 +56,7 @@ const MemberListcomp = () => {
                                 <td>{item.memberPhone}</td>
                                 <td>
                                     <button className={memberStyle.button} onClick={() => onStop(item.memberId)}>
-                                        {item.isDeleted ? '해지' : '정지'}
+                                        {item.deleted ? '해지' : '정지'}
                                     </button>
                                 </td>
                             </tr>

@@ -5,6 +5,7 @@ const MainPage = () => {
     return (
         <>
             <DefaultLayout>
+                <br/>
                 <MainComp/>
             </DefaultLayout>
         </>
