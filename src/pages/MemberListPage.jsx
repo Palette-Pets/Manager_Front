@@ -5,7 +5,6 @@ const MemberListPage = () => {
     return (
         <>
             <DefaultLayout>
-                <br/>
                 <MemberListcomp/>
             </DefaultLayout>
         </>
