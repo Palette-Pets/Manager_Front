@@ -49,8 +49,10 @@
   }
 
   .head button {
-    display: flex;
-    margin-bottom: 1rem;
+    position: absolute;
+    height: 2rem;
+    top: 6rem;
+    right: 10px;
     border-radius: 8px;
     border: 1px solid transparent;
     background-color: #1976d2;

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 import memberStyle from '../../styles/memberList.module.css';
 
 const MemberListcomp = () => {
     const [list, setList] = useState([]);
-
-    const { page } = useParams();
+    const [showStopped, setShowStopped] = useState(false); // 새로운 상태 추가
 
     useEffect(() => {
         axios.get(`http://localhost:8090/memberList`)
@@ -16,22 +14,37 @@ const MemberListcomp = () => {
             console.log('API 응답', res.data);
         })
         .catch(error => console.log('에러 발생', error));
-    }, [page]);
+    }, []);
 
     const onStop = (memberId) => {
         axios.put(`http://localhost:8090/stopMember/${memberId}`)
         .then(res => {
-            setList(list.map(member =>
-                member.memberId === memberId ? { ...member, deleted: !member.deleted } : member
-            ));
+            // 상태 업데이트
+            setList(prevList => 
+                prevList.map(member =>
+                    member.memberId === memberId ? { ...member, deleted: !member.deleted } : member
+                )
+            );
             console.log('API 응답', res.data);
         })
         .catch(error => console.log('에러 발생', error));
     }
 
+    const toggleShowStopped = () => {
+        setShowStopped(!showStopped);
+    }
+
+    // 필터링된 리스트
+    const filteredList = showStopped ? list.filter(member => member.deleted) : list;
+
     return (
         <>
-            <h2>회원정보</h2>
+            <div className={memberStyle.head}>
+                <h2>회원정보</h2>
+                <button onClick={toggleShowStopped}>
+                    {showStopped ? '전체 보기' : '정지된 회원'}
+                </button>
+            </div>
             <table className={memberStyle.table}>
                 <thead>
                     <tr>
@@ -45,8 +58,8 @@ const MemberListcomp = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {list.length > 0 ? (
-                        list.map(item => (
+                    {filteredList.length > 0 ? (
+                        filteredList.map(item => (
                             <tr key={item.memberId} className={memberStyle.list}>
                                 <td>{item.email}</td>
                                 <td>{item.memberName}</td>
