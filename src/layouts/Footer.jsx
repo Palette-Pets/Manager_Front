@@ -52,6 +52,10 @@ const Footer = () => {
   const onMemberList = () => {
     navigate('/memberlist');
   }
+  
+  const onReportList = () => {
+    navigate('/reportList');
+  }
  
   return (
     <>
@@ -66,7 +70,7 @@ const Footer = () => {
           onChange={handleNavigationChange}>
           <BottomNavigationAction label="Home" icon={<Home />} onClick={onHome} />
           <BottomNavigationAction label="MemberList" icon={<Favorite />} onClick={onMemberList} />
-          <BottomNavigationAction label="Archive" icon={<Archive />} />
+          <BottomNavigationAction label="ReportList" icon={<Archive />} onClick={onReportList} />
           <BottomNavigationAction label="Location On" icon={<LocationOn />}/>
         </BottomNavigation>
         <Link to="/article/write">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import memberStyle from '../../styles/memberList.module.css';
+import listStyle from '../../styles/list.module.css';
 
 const MemberListcomp = () => {
     const [list, setList] = useState([]);
@@ -39,13 +39,13 @@ const MemberListcomp = () => {
 
     return (
         <>
-            <div className={memberStyle.head}>
+            <div className={listStyle.head}>
                 <h2>회원정보</h2>
                 <button onClick={toggleShowStopped}>
                     {showStopped ? '전체 보기' : '정지된 회원'}
                 </button>
             </div>
-            <table className={memberStyle.table}>
+            <table className={listStyle.table}>
                 <thead>
                     <tr>
                         <th>이메일</th>
@@ -60,7 +60,7 @@ const MemberListcomp = () => {
                 <tbody>
                     {filteredList.length > 0 ? (
                         filteredList.map(item => (
-                            <tr key={item.memberId} className={memberStyle.list}>
+                            <tr key={item.memberId} className={listStyle.list}>
                                 <td>{item.email}</td>
                                 <td>{item.memberName}</td>
                                 <td>{item.memberNickName}</td>
@@ -68,7 +68,7 @@ const MemberListcomp = () => {
                                 <td>{item.memberBirth}</td>
                                 <td>{item.memberPhone}</td>
                                 <td>
-                                    <button className={memberStyle.button} onClick={() => onStop(item.memberId)}>
+                                    <button className={listStyle.button} onClick={() => onStop(item.memberId)}>
                                         {item.deleted ? '해지' : '정지'}
                                     </button>
                                 </td>
