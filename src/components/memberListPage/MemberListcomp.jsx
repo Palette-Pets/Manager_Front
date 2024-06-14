@@ -5,7 +5,7 @@ import listStyle from '../../styles/list.module.css';
 
 const MemberListcomp = () => {
     const [list, setList] = useState([]);
-    const [showStopped, setShowStopped] = useState(false); // 새로운 상태 추가
+    const [showStopped, setShowStopped] = useState(false); 
 
     useEffect(() => {
         axios.get(`http://localhost:8090/memberList`)
@@ -19,7 +19,6 @@ const MemberListcomp = () => {
     const onStop = (memberId) => {
         axios.put(`http://localhost:8090/stopMember/${memberId}`)
         .then(res => {
-            // 상태 업데이트
             setList(prevList => 
                 prevList.map(member =>
                     member.memberId === memberId ? { ...member, deleted: !member.deleted } : member
@@ -34,7 +33,6 @@ const MemberListcomp = () => {
         setShowStopped(!showStopped);
     }
 
-    // 필터링된 리스트
     const filteredList = showStopped ? list.filter(member => member.deleted) : list;
 
     return (
@@ -55,7 +53,7 @@ const MemberListcomp = () => {
                         <th>생일</th>
                         <th>휴대폰</th>
                         <th>신고</th>
-                        <th>정지/해지</th>
+                        <th>활동/정지</th>
                     </tr>
                 </thead>
                 <tbody className={listStyle.list}>
@@ -70,15 +68,15 @@ const MemberListcomp = () => {
                                 <td>{item.memberPhone}</td>
                                 <td>{item.reportCount}</td>
                                 <td>
-                                    <button className={listStyle.button} onClick={() => onStop(item.memberId)}>
-                                        {item.deleted ? '해지' : '정지'}
+                                    <button className={listStyle.button} onClick={() => onStop(item.memberId)} style={{backgroundColor: item.deleted ? 'red' : ''}}>
+                                        {item.deleted ? '정지' : '활동'}
                                     </button>
                                 </td>
                             </tr>                           
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="7">데이터가 없습니다.</td>
+                            <td colSpan="8">데이터가 없습니다.</td>
                         </tr>
                     )}
                 </tbody>

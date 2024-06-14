@@ -55,10 +55,6 @@ const ReportComp = () => {
         setMember(null);
     };
 
-    const onStop = (memberId) => {
-        console.log(`정지/해지 버튼 클릭: ${memberId}`);
-    };
-
     if (loading) {
         return <div>로딩 중...</div>;
     }
@@ -81,10 +77,10 @@ const ReportComp = () => {
                             <th>날짜</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className={listStyle.list}>
                         {list.length > 0 ? (
                             list.map(item => (
-                                <tr key={item.reportId} className={listStyle.list}>
+                                <tr key={item.reportId} className={listStyle.modalButton}>
                                     <td>
                                         <button onClick={() => openModal(item.reporterEmail)}>
                                             {item.reporterEmail}
@@ -109,7 +105,7 @@ const ReportComp = () => {
                 </table>
             )}
             <Modal open={modalOpen} onClose={closeModal}>
-                <div className={modalListStyle.modalContent} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px', boxShadow: '24px', }}>
+                <div className={modalListStyle.modalContent}>
                     {modalLoading ? (
                         <p>로딩 중...</p>
                     ) : member ? (
@@ -138,9 +134,9 @@ const ReportComp = () => {
                                         <td>{member.reportContent}</td>
                                         <td>{member.reportCount}</td>
                                         <td>
-                                            <button className={modalListStyle.button} onClick={() => onStop(member.memberId)}>
-                                                {member.deleted ? '해지' : '정지'}
-                                            </button>
+                                            <p style={{ color: member.deleted ? 'red' : '#1976d2'}}>
+                                                {member.deleted ? '정지' : '활동'}
+                                            </p>
                                         </td>
                                     </tr>
                                 </tbody>
