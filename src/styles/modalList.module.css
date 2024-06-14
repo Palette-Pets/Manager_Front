@@ -1,0 +1,107 @@
+/* 모달의 배경을 어둡게 하는 스타일 */
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 다른 요소보다 위에 표시 */
+}
+
+/* 모달 컨텐츠 스타일 */
+.modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  width: 100%;
+  max-width: 95%;
+}
+
+/* 모달 헤더 스타일 */
+.head {
+  padding: 0.5rem 0 0 0.5rem;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.head h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* 테이블 스타일 */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem;
+  border: 1px solid #000;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* 리스트 항목 스타일 */
+.list {
+  transition: background-color 0.3s ease;
+}
+
+.list:hover {
+  background-color: #f5f5f5;
+}
+
+/* 버튼 스타일 */
+.button,
+.head button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.button:hover,
+.head button:hover {
+  background-color: #4c9cec;
+}
+
+.head button {
+  position: absolute;
+  height: 2rem;
+  top: 6rem;
+  right: 10px;
+}
+
+/* 로딩 중, 오류 메시지 스타일 */
+.loading,
+.error {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+}

@@ -54,25 +54,27 @@ const MemberListcomp = () => {
                         <th>주소</th>
                         <th>생일</th>
                         <th>휴대폰</th>
-                        <th>비고</th>
+                        <th>신고</th>
+                        <th>정지/해지</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className={listStyle.list}>
                     {filteredList.length > 0 ? (
                         filteredList.map(item => (
-                            <tr key={item.memberId} className={listStyle.list}>
+                            <tr key={item.memberId} >
                                 <td>{item.email}</td>
                                 <td>{item.memberName}</td>
                                 <td>{item.memberNickName}</td>
                                 <td>{item.memberAddress}</td>
                                 <td>{item.memberBirth}</td>
                                 <td>{item.memberPhone}</td>
+                                <td>{item.reportCount}</td>
                                 <td>
                                     <button className={listStyle.button} onClick={() => onStop(item.memberId)}>
                                         {item.deleted ? '해지' : '정지'}
                                     </button>
                                 </td>
-                            </tr>
+                            </tr>                           
                         ))
                     ) : (
                         <tr>
