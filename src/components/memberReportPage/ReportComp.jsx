@@ -10,7 +10,7 @@ const ReportComp = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [modalOpen, setModalOpen] = useState(false);
-    const [member, setMember] = useState([]);
+    const [member, setMember] = useState(null);
     const [modalLoading, setModalLoading] = useState(false);
 
     useEffect(() => {
@@ -55,8 +55,8 @@ const ReportComp = () => {
         setMember(null);
     };
 
-    const onStop = (memberEmail) => {
-        console.log(`정지/해지 버튼 클릭: ${memberEmail}`);
+    const onStop = (memberId) => {
+        console.log(`정지/해지 버튼 클릭: ${memberId}`);
     };
 
     if (loading) {
@@ -109,7 +109,7 @@ const ReportComp = () => {
                 </table>
             )}
             <Modal open={modalOpen} onClose={closeModal}>
-                <div className={modalListStyle.modalContent}>
+                <div className={modalListStyle.modalContent} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px', boxShadow: '24px', }}>
                     {modalLoading ? (
                         <p>로딩 중...</p>
                     ) : member ? (
@@ -130,28 +130,19 @@ const ReportComp = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {member.length > 0 ? (
-                                    member.map(item => (
-                                        <tr key={item.memberId} className={modalListStyle.list}>
-                                            <td>{item.email}</td>
-                                            <td>{item.memberName}</td>
-                                            <td>{item.memberNickName}</td>
-                                            <td>{item.reportReason}</td>
-                                            <td>{item.reportContent}</td>
-                                            <td>{item.reportCount}</td>
-                                            <td>
-                                                <button className={modalListStyle.button} onClick={() => onStop(item.memberId)}>
-                                                    {item.deleted ? '해지' : '정지'}
-                                                </button>
-                                            </td>
-                                        </tr>
-                                
-                                    ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan="7">데이터가 없습니다.</td>
+                                    <tr key={member.memberId} className={modalListStyle.list}>
+                                        <td>{member.email}</td>
+                                        <td>{member.memberName}</td>
+                                        <td>{member.memberNickName}</td>
+                                        <td>{member.reportReason}</td>
+                                        <td>{member.reportContent}</td>
+                                        <td>{member.reportCount}</td>
+                                        <td>
+                                            <button className={modalListStyle.button} onClick={() => onStop(member.memberId)}>
+                                                {member.deleted ? '해지' : '정지'}
+                                            </button>
+                                        </td>
                                     </tr>
-                                )}
                                 </tbody>
                             </table>
                         </>
