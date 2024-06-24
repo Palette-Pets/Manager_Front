@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Modal } from '@mui/material';
+import { url } from '../../utils/single';
 
 import listStyle from '../../styles/list.module.css';
 import modalListStyle from '../../styles/modalList.module.css';
@@ -14,7 +15,7 @@ const ReportComp = () => {
     const [modalLoading, setModalLoading] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:8090/memberReportList')
+        axios.get(`${url}/memberReportList`)
             .then(res => {
                 setList(res.data);
                 console.log('API 응답', res.data);
@@ -36,7 +37,7 @@ const ReportComp = () => {
     const openModal = (memberEmail) => {
         setError(null);
         setModalLoading(true);
-        axios.get(`http://localhost:8090/member/${memberEmail}`)
+        axios.get(`${url}/member/${memberEmail}`)
             .then(res => {
                 setMember(res.data);
                 setModalOpen(true);

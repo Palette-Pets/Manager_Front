@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {url} from '../../utils/single';
 
 import listStyle from '../../styles/list.module.css';
 
@@ -8,7 +9,7 @@ const MemberListcomp = () => {
     const [showStopped, setShowStopped] = useState(false); 
 
     useEffect(() => {
-        axios.get(`http://localhost:8090/memberList`)
+        axios.get(`${url}/memberList`)
         .then(res => {
             setList(res.data);
             console.log('API 응답', res.data);
@@ -17,7 +18,7 @@ const MemberListcomp = () => {
     }, []);
 
     const onStop = (memberId) => {
-        axios.put(`http://localhost:8090/stopMember/${memberId}`)
+        axios.put(`${url}/stopMember/${memberId}`)
         .then(res => {
             setList(prevList => 
                 prevList.map(member =>
