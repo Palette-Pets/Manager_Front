@@ -1,10 +1,10 @@
 # Stage 1: Build React App
 FROM node:21.6.0 AS build
 
-RUN npm install -g vite
-
 # Set working directory
 WORKDIR /app
+
+RUN npm i
 
 # Copy package files and install dependencies
 COPY package*.json ./
